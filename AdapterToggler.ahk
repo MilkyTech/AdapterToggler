@@ -7,6 +7,15 @@ A_TrayMenu.Add("Toggle Adapter", (*) => ToggleAdapter())
 A_TrayMenu.Add()
 A_TrayMenu.Add("Exit", (*) => ExitApp())
 
+OnMessage(0x404, TrayClickHandler)
+
+TrayClickHandler(wParam, lParam, *) {
+    ; 0x202 = WM_LBUTTONUP (left button released)
+    if (lParam = 0x202) {
+        ToggleAdapter()
+    }
+}
+
 DetectActiveAdapterAndSetIcon() {
     ethernetConnected := false
     ethernetDisconnected := false
@@ -60,11 +69,11 @@ DetectActiveAdapterAndSetIcon()
 SetTimer(CheckNetworkStatus, 15000)  ; Check every 15 seconds
 
 CheckNetworkStatus() {
-    isProcessExist := ProcessExist("cod.exe")  ; Edit this process for whatever app you want to slow the timer for
+    isProcessExist := ProcessExist("cod.exe")  ; Edit this exe for whatever app you want to slow the timer
     if !isProcessExist {
         DetectActiveAdapterAndSetIcon()
     } else {
-        SetTimer(CheckNetworkStatus, 300000)  ; Check every 5 minutes when ProcessExist is running
+        SetTimer(CheckNetworkStatus, 300000)  ; Check every 5 minutes when game is running
     }
 }
 

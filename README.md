@@ -4,6 +4,7 @@ Quick and clean Ethernet ↔ Wi-Fi switching with custom sounds and smart tray i
 
 ## Features
 - **Hotkey** toggling between Ethernet and Wi-Fi
+- **One-Click Functionality** by left-clicking tray icon
 - **Sys Tray Right Click** toggling between Ethernet and Wi-Fi
 - **Custom tray icons** for different network statuses:
   - Ethernet connected
